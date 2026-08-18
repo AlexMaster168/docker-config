@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   frontend:
     build:
@@ -40,7 +38,7 @@ services:
       - first-docker-network
 
   api_db:
-    image: mongo:latest
+    image: mongo:8.3
     container_name: first-docker-api-db
     volumes:
       - mongodb_api:/data/db
@@ -48,7 +46,7 @@ services:
       - first-docker-network
 
   auth_db:
-    image: mongo:latest
+    image: mongo:8.3
     container_name: first-docker-auth-db
     volumes:
       - mongodb_auth:/data/db
@@ -56,7 +54,7 @@ services:
       - first-docker-network
 
   nginx:
-    image: nginx:stable-alpine
+    image: nginx:1.30-alpine
     container_name: first-docker-nginx
     ports:
       - "80:80"
@@ -74,5 +72,3 @@ volumes:
 networks:
   first-docker-network:
     driver: bridge
-
-
